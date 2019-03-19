@@ -1,0 +1,120 @@
+{% extends "layout.html" %} {% block title %} Crypto Market {% endblock %} {% block main %}
+
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a  href="#usdt" data-toggle="tab">USDT Pairs</a>
+        </li>
+        <li><a href="#btc" data-toggle="tab">BTC Pairs</a></li>
+        <li><a href="#eth" data-toggle="tab">ETH Pairs</a></li>
+        <li><a href="#chart" data-toggle="tab">Chart</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="usdt" class="tab-pane fade in active">
+            <table class="table">
+                {% if not empty %}
+                    <thead>
+                        <tr>
+                            <th scope="col">Pair</th>
+                            <th scope="col">Bid</th>
+                            <th scope="col">Ask</th>
+                            <th scope="col">Bid Qty</th>
+                            <th scope="col">Ask Qty</th>
+                        </tr>
+                    </thead>
+                    {% for key in coins["usdt"] %} 
+                        <tr>
+                            <th scope="row">{{ key }}</th>
+                            <td>{{ coins["usdt"][key]["bid"] }}</td>
+                            <td>{{ coins["usdt"][key]["ask"] }}</td>
+                            <td>{{ coins["usdt"][key]["bidQty"] }}</td>
+                            <td>{{ coins["usdt"][key]["askQty"] }}</td>
+                        </tr>
+                    {% endfor %} 
+                {% endif %}
+            </table>
+        </div>
+
+        <div id="btc" class="tab-pane fade">
+            <table class="table">
+                {% if not empty %}
+                    <thead>
+                        <tr>
+                            <th scope="col">Pair</th>
+                            <th scope="col">Bid</th>
+                            <th scope="col">Ask</th>
+                            <th scope="col">Bid Qty</th>
+                            <th scope="col">Ask Qty</th>
+                        </tr>
+                    </thead>
+                    {% for key in coins["btc"] %} 
+                        <tr>
+                            <th scope="row">{{ key }}</th>
+                            <td>{{ coins["btc"][key]["bid"] }}</td>
+                            <td>{{ coins["btc"][key]["ask"] }}</td>
+                            <td>{{ coins["btc"][key]["bidQty"] }}</td>
+                            <td>{{ coins["btc"][key]["askQty"] }}</td>
+                        </tr>
+                    {% endfor %} 
+                {% endif %}
+            </table>
+        </div>
+        <div id="eth" class="tab-pane fade">
+            <table class="table">
+                {% if not empty %}
+                    <thead>
+                        <tr>
+                            <th scope="col">Pair</th>
+                            <th scope="col">Bid</th>
+                            <th scope="col">Ask</th>
+                            <th scope="col">Bid Qty</th>
+                            <th scope="col">Ask Qty</th>
+                        </tr>
+                    </thead>
+                    {% for key in coins["eth"] %} 
+                        <tr>
+                            <th scope="row">{{ key }}</th>
+                            <td>{{ coins["eth"][key]["bid"] }}</td>
+                            <td>{{ coins["eth"][key]["ask"] }}</td>
+                            <td>{{ coins["eth"][key]["bidQty"] }}</td>
+                            <td>{{ coins["eth"][key]["askQty"] }}</td>
+                        </tr>
+                    {% endfor %} 
+                {% endif %}
+            </table>
+        </div>
+        <div id="chart" class="tab-pane fade">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+              <div id="tradingview_9dc88"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BINANCE-BTCUSDT/" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT chart</span></a> by TradingView</div>
+              <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+              <script type="text/javascript">
+              new TradingView.widget(
+              {
+              "width": 980,
+              "height": 610,
+              "symbol": "BINANCE:BTCUSDT",
+              "interval": "D",
+              "timezone": "Etc/UTC",
+              "theme": "Light",
+              "style": "1",
+              "locale": "en",
+              "toolbar_bg": "#f1f3f6",
+              "enable_publishing": false,
+              "withdateranges": true,
+              "hide_side_toolbar": false,
+              "allow_symbol_change": true,
+              "container_id": "tradingview_9dc88"
+            }
+              );
+              </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

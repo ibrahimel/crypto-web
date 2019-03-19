@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block title %} Market News {% endblock %} {% block main %} {% for item in articles %}
+<div class="card text-left">
+
+    <div class="card-body">
+        <h3 class="card-title-author">{{ item["title"] }}</h5>
+            <h6 class="card-title"> - {{ item["author"] }}</h4>
+                <h4 class="card-text">{{ item["description"] }}</h4>
+                <a href={{ item[ "url"] }} class="badge badge-primary">Click for more</a><br /><br />
+                <img class="card-img-top" src={{ item[ "urlToImage"] }} alt="No image provided" />
+    </div>
+</div>
+{% endfor %} {% endblock %}
