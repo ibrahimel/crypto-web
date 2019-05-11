@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-''' References
+''' References and sources
 https://github.com/cs50
 https://github.com/pyauth/pyotp
 https://github.com/tornikenats/flask-pyotp
